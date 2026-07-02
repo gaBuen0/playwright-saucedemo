@@ -28,8 +28,8 @@ fixtures.js  → Conexão entre BDD e Page Objects
 
 # Como rodar
 
-npm install
-npx playwright install
-npx bddgen
-npx playwright test
-npx playwright show-report
+- npm install
+- npx playwright install
+- npx bddgen
+- npx playwright test
+- npx playwright show-report
