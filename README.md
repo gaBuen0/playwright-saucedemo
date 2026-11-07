@@ -1,35 +1,53 @@
-# Automação de Testes — Saucedemo
+# 🧪 Automação de Testes — SauceDemo
 
-Projeto de automação de testes end-to-end com Playwright, JavaScript e BDD (Gherkin).
+Testes end-to-end do [SauceDemo](https://www.saucedemo.com) (e-commerce de demonstração) com **Playwright**, **JavaScript** e **BDD (Gherkin)** via `playwright-bdd`, organizados em **Page Object Model**.
 
-# Tecnologias
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Cucumber/Gherkin](https://img.shields.io/badge/Cucumber%2FGherkin-23D96C?style=flat-square&logo=cucumber&logoColor=white)
 
-- Playwright
-- JavaScript
-- BDD com Gherkin (playwright-bdd)
+## O que este projeto faz
+
+Automatiza os fluxos principais de uma loja virtual — do login ao checkout — com os cenários escritos em Gherkin (português) e conectados a Page Objects pelo `playwright-bdd`.
+
+## Cenários cobertos
+
+- Login com sucesso (`standard_user`)
+- Login com credenciais inválidas (mensagem de erro)
+- Listagem dos produtos após o login
+- Adicionar produto ao carrinho
+- Checkout completo (end-to-end)
+
+## Stack
+
+- [Playwright](https://playwright.dev) — execução dos testes no navegador
+- JavaScript (Node.js)
+- [playwright-bdd](https://github.com/vitalets/playwright-bdd) — BDD com Gherkin sobre o Playwright
 - Page Object Model
 
-# Testes cobertos
+## Estrutura
 
-- Login com sucesso
-- Login com credenciais inválidas
-- Listagem de 6 produtos após login
-- Adicionar produto ao carrinho
-- Checkout completo (e2e)
+```
+data/        Dados de teste centralizados (usuários)
+features/    Cenários em Gherkin (.feature)
+pages/       Page Objects (LoginPage, InventoryPage, CartPage)
+steps/       Step definitions do BDD
+tests/       Testes Playwright sem BDD
+fixtures.js  Conexão entre os steps BDD e os Page Objects
+```
 
-# Estrutura
+## Como rodar
 
-data/        → Dados de teste centralizados
-features/    → Cenários em Gherkin (.feature)
-pages/       → Page Objects (LoginPage, InventoryPage, CartPage)
-steps/       → Step definitions do BDD
-tests/       → Testes Playwright sem BDD
-fixtures.js  → Conexão entre BDD e Page Objects
+Pré-requisitos: Node.js 18+.
 
-# Como rodar
+```bash
+npm install                 # instala as dependências
+npx playwright install      # baixa os navegadores
+npx bddgen                  # gera os specs a partir dos .feature
+npx playwright test         # executa os testes
+npx playwright show-report  # abre o relatório HTML
+```
 
-- npm install
-- npx playwright install
-- npx bddgen
-- npx playwright test
-- npx playwright show-report
+---
+
+Projeto de estudo de automação de testes. O SauceDemo é um site público mantido pela Sauce Labs para prática.
